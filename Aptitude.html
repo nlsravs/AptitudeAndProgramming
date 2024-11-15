@@ -11,36 +11,35 @@
             background-color: #000304;
         }
 
-        /* Main container for stacking PDF and Lessons vertically */
         .container {
             display: flex;
             flex-direction: column; /* Stack PDF and Lessons vertically */
-            height: 100vh; /* Full height */
-            width: 100%; /* Full width */
+            height: 100vh; /* Full screen height */
+            width: 100%;
         }
 
-        /* PDF container settings */
+        /* PDF and Video Section */
         .pdf-container {
             width: 100%; /* Full width */
-            height: 50vh; /* Take up half the screen height */
+            height: 50vh; /* 50% of viewport height */
             padding: 0;
         }
 
         .pdf {
-            width: 100%;
-            height: 100%; /* Make the PDF take up full height of its container */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height of the container */
             border: none;
         }
 
-        /* Lessons container settings */
+        /* Lessons Section */
         .lessons {
-            width: 100%; /* Full width */
-            height: 50vh; /* Take up the other half of the screen height */
+            width: 100%;
+            height: 50vh; /* Remaining 50% of viewport height */
             padding: 10px;
             background-color: #000304;
             border: 2px solid #ffffff;
             border-radius: 20px;
-            overflow-y: auto;
+            overflow-y: auto; /* Allows scrolling if content overflows */
         }
 
         h1,
@@ -94,12 +93,6 @@
             display: block;
         }
 
-        .video {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-
         .button-container {
             text-align: center;
             margin-top: 10px;
@@ -120,43 +113,38 @@
             color: rgba(3, 27, 13, 0.567);
         }
 
-        /* Mobile responsiveness for smaller devices */
         @media (max-width: 768px) {
             .container {
-                flex-direction: column; /* Ensure content stays in column layout */
+                flex-direction: column; /* Stack elements vertically on small screens */
             }
 
-            .pdf-container {
-                height: 50vh; /* Adjust PDF container height for mobile */
-            }
-
+            .pdf-container,
             .lessons {
-                height: 50vh; /* Adjust lessons container height for mobile */
+                height: 50vh; /* Adjust PDF and lessons height for mobile */
             }
 
             .button-container button {
-                width: 100%;  /* Make buttons full-width for mobile */
-                margin-bottom: 10px;  /* Add space between buttons */
+                width: 100%; /* Make buttons full width on mobile */
+                margin-bottom: 10px;
             }
 
             .video {
-                height: 200px;  /* Reduce video height on smaller screens */
+                height: 200px; /* Adjust video height for smaller screens */
             }
         }
-
     </style>
 </head>
 
 <body>
 
     <div class="container">
-        <!-- PDF Section -->
+        <!-- PDF and Video Section (Top) -->
         <div class="pdf-container">
             <h1>Aptitude and Reasoning</h1>
             <iframe class="pdf" id="pdfIframe" src="Presentation2.pdf"></iframe>
         </div>
 
-        <!-- Lessons Section -->
+        <!-- Lessons Section (Bottom) -->
         <div class="lessons">
             <!-- Level 1 -->
             <div class="level" style="background-color:rgb(229, 145, 227);">
@@ -189,61 +177,26 @@
                     </div>
                 </div>
 
-                <div class="module">
-                    <div class="module-header" onclick="toggleModule('level1module3')">
-                        Module 3
-                        <span>&#9660;</span>
-                    </div>
-                    <div class="module-content" id="level1module3">
-                        <p>Description for Module 3</p>
-                        <div class="button-container">
-                            <button onclick="openPDF('Aptitude Percentage.pdf')">Open PDF</button>
-                            <button onclick="openVideo('https://www.youtube.com/embed/9VIiLJL0H4Y?si=IxaAZLqf3bMBw7Dd')">Play Video</button>
-                        </div>
-                    </div>
-                </div>
+                <!-- Additional Modules can follow the same structure -->
 
-                <div class="module">
-                    <div class="module-header" onclick="toggleModule('level1module4')">
-                        Module 4
-                        <span>&#9660;</span>
-                    </div>
-                    <div class="module-content" id="level1module4">
-                        <p>Description for Module 4</p>
-                        <div class="button-container">
-                            <button onclick="openPDF('Aptitude Percentage.pdf')">Open PDF</button>
-                            <button onclick="openVideo('https://www.youtube.com/embed/CgkZ7MvWUAA?si=7CLwpSefDL0h3kBP')">Play Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-header" onclick="toggleModule('level1module5')">
-                        Module 5
-                        <span>&#9660;</span>
-                    </div>
-                    <div class="module-content" id="level1module5">
-                        <p>Description for Module 5</p>
-                        <div class="button-container">
-                            <button onclick="openPDF('Aptitude Percentage.pdf')">Open PDF</button>
-                            <button onclick="openVideo('https://www.youtube.com/embed/yZVQJkKY_p0?si=yedw-gig1DRn4XQv')">Play Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="module">
-                    <div class="module-header" onclick="toggleModule('level1module6')">
-                        Module 6
-                        <span>&#9660;</span>
-                    </div>
-                    <div class="module-content" id="level1module6">
-                        <div class="button-container">
-                            <button onclick="openNextPage('Quize.html')">Click Here</button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
+            <!-- Level 2 -->
+            <div class="level" style="background-color:rgb(12, 187, 245);">
+                <div class="level-heading" style="background-color:rgb(140, 227, 240);color: #0d4a54;">Level 2</div>
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level2module1')">
+                        Module 1
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level2module1">
+                        <div class="button-container">
+                            <button onclick="openPDF('reactbook.pdf')">Open PDF</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional modules -->
+            </div>
         </div>
     </div>
 
