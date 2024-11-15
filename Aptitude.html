@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PDF and Lessons</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000304;
+        }
+
+        .container {
+            display: 0;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .pdf-container,
+        .lessons {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0px;
+        }
+
+        .pdf-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pdf {
+            width: 100%;
+            height: 60vh;
+            border: none;
+        }
+
+        .lessons {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            background-color: #000304;
+            padding: 0px;
+        }
+
+        h1,
+        h3 {
+            text-align: center;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        .level {
+            margin-bottom: 20px;
+            border: 2px solid #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: hsl(193, 90%, 46%);
+        }
+
+        .level-heading {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .module {
+            margin-bottom: 20px;
+            border: 2px solid #ffffff;
+        }
+
+        .module-header {
+            background-color: hsla(153, 74%, 8%, 0.319);
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .module-content {
+            display: none;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .module-content.active {
+            display: block;
+        }
+
+        .video {
+            width: 100%;
+            height: 10%;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .button-container button {
+            padding: 8px 16px;
+            background-color: hsl(311, 91%, 49%);
+            border: none;
+            color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button-container button:hover {
+            background-color: #a0f3f6;
+            color: rgba(3, 27, 13, 0.567);
+        }
+
+        
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .pdf-container {
+                width: 100%;
+                max-width: none;
+                height: 100vh;
+            }
+
+            .pdf {
+                height: 100vh;
+            }
+
+            .lessons {
+                width: 35%;
+                margin-left: 5%;
+                max-width: none;
+                height: 100vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="pdf-container">
+            <h1>Aptitude and Reasoning</h1>
+            <iframe class="pdf" id="pdfIframe" src="Presentation2.pdf"></iframe>
+        </div>
+
+        <div class="lessons">
+            <!-- Level 1 -->
+            <div class="level" style="background-color:rgb(229, 145, 227);">
+                <div class="level-heading" style="background-color:rgb(251, 168, 245);color: #0d000c;">Aptitude</div>
+
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level1module1')">
+                        Percentage
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level1module1">
+                        <div class="button-container">
+                            <button onclick="openPDF('Aptitude Percentage.pdf')">Open PDF</button>
+                            <button onclick="openVideo('https://www.youtube.com/embed/RWdNhJWwzSs?si=SbOrwsI6bu2do2vw')">Play Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level1module2')">
+                        Profit And Loss
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level1module2">
+                        <p>Description for Module 2</p>
+                        <div class="button-container">
+                        <button onclick="openPDF('Profit & loss(1).pdf')">Open PDF</button>
+                        <button onclick="openVideo('https://www.youtube.com/embed/T2odvmxqi1I?si=F-bh5dy4eNM_It1Z')">Play Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level1module3')">
+                        Module 3
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level1module3">
+                        <p>Description for Module 3</p>
+                        <div class="button-container">
+                        <button onclick="openPDF('Aptitude Percentage.pdf')">Open PDF</button>
+                        <button onclick="openVideo('https://www.youtube.com/embed/9VIiLJL0H4Y?si=IxaAZLqf3bMBw7Dd')">Play Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level1module4')">
+                        Module 4
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level1module4">
+                        <p>Description for Module 4</p>
+                        <div class="button-container">
+                        <button onclick="openPDF('Aptitude Percentage.pdf')">Open PDF</button>
+                        <button onclick="openVideo('https://www.youtube.com/embed/CgkZ7MvWUAA?si=7CLwpSefDL0h3kBP')">Play Video</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level1module5')">
+                        Module 5
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level1module5">
+                        <p>Description for Module 5</p>
+                        <div class="button-container">
+                        <button onclick="openPDF('Aptitude Percentage.pdf')">Open PDF</button>
+                        <button onclick="openVideo('https://www.youtube.com/embed/yZVQJkKY_p0?si=yedw-gig1DRn4XQv')">Play Video</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level1module6')">
+                        Module 6
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level1module6">
+                        <div class="button-container">
+                            <button onclick="openNextPage('Quize.html')">Click Here</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level 2 -->
+            <div class="level" style="background-color:rgb(12, 187, 245);">
+                <div class="level-heading" style="background-color:rgb(140, 227, 240);color: #0d4a54;">Level 2</div>
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level2module1')">
+                        Module 1
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level2module1">
+                        <div class="button-container">
+                            <button onclick="openPDF('reactbook.pdf')">Open PDF</button>
+                        </div>
+                    </div>
+                </div>
+                
+
+                
+
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level2module2')">
+                        Module 2
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level2module2">
+                        <p>Description for Module 1</p>
+                        <video class="video" controls onclick="openVideo('video1.mp4')">
+                            <source src="v2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+               
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level2module3')">
+                        Module 3
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level2module3">
+                        <p>Description for Module 3</p>
+                        <video class="video" controls onclick="openVideo('https://www.youtube.com/embed/CgkZ7MvWUAA?si=7CLwpSefDL0h3kBP')">
+                            <source src="v3.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level2module4')">
+                        Module 4
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level2module4">
+                        <p>Description for Module 4</p>
+                        <video class="video" controls onclick="openVideo('video4.mp4')">
+                            <source src="v4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level2module5')">
+                        Module 5
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level2module5">
+                        <p>Description for Module 5</p>
+                        <video class="video" controls onclick="openVideo('video5.mp4')">
+                            <source src="v1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="module">
+                    <div class="module-header" onclick="toggleModule('level2module6')">
+                        Module 6
+                        <span>&#9660;</span>
+                    </div>
+                    <div class="module-content" id="level2module6">
+                        <div class="button-container">
+                            <button onclick="openNextPage('Quize.html')">Click Here</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleModule(moduleId) {
+            const moduleContent = document.getElementById(moduleId);
+            if (moduleContent) {
+                moduleContent.classList.toggle('active');
+            }
+        }
+
+        function openPDF(pdfFile) {
+            const pdfIframe = document.getElementById('pdfIframe');
+            if (pdfIframe) {
+                pdfIframe.src = pdfFile;
+            }
+        }
+
+        function openVideo(videoFile) {
+            const pdfIframe = document.getElementById('pdfIframe');
+            if (pdfIframe) {
+                pdfIframe.src = videoFile;
+            }
+        }
+
+        function openNextPage(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>

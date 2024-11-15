@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple WebPage with BTS Quotes</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full-page layout */
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent; /* No background color */
+            overflow: hidden;
+            color: #fff; /* White text color for contrast */
+            position: relative;
+        }
+
+        /* Centered container for buttons */
+        .button-container {
+            text-align: center;
+        }
+
+        .button {
+            font-size: 2rem;
+            padding: 20px 40px;
+            margin: 20px;
+            border: 2px solid #800080; /* Purple border */
+            background-color: transparent; /* No background color */
+            color: #800080; /* Purple text */
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Button 1 - Light Blue */
+        .button-lightblue {
+            color: #ffffff; /* Light Blue text */
+            border-color: #ffffff; /* Light Blue border */
+            background-color:#00bfff;
+        }
+
+        .button-lightblue:hover {
+            background-color: #800080; /* Purple background on hover */
+            color: #fff; /* White text on hover */
+        }
+
+        /* Button 2 - Pink */
+        .button-pink {
+            color: #ffffff; /* Pink text */
+            border-color: #ffffff; /* Pink border */
+            background-color:#ff69b4;
+        }
+
+        .button-pink:hover {
+            background-color: #800080; /* Purple background on hover */
+            color: #fff; /* White text on hover */
+        }
+
+        /* Quotation Section */
+        .quotes {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: #800080; /* Purple quotes */
+            text-align: center;
+            font-style: italic;
+            max-width: 90%;
+            white-space: nowrap;
+        }
+
+        /* Falling Circles Effect */
+        .falling-ball {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ffb7db;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: fall 15s infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(100px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .button {
+                font-size: 1.5rem;
+                padding: 15px 25px;
+            }
+
+            .quotes {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .button {
+                font-size: 1.8rem;
+                padding: 18px 35px;
+            }
+
+            .quotes {
+                font-size: 1.3rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Button container -->
+    <div class="button-container">
+        <!-- Button 1: Light Blue -->
+        <button class="button button-lightblue" onclick="window.location.href='Aptitude.html'">Go to Page 1</button>
+
+        <!-- Button 2: Pink -->
+        <button class="button button-pink" onclick="window.location.href='Programs.html'">Go to Page 2</button>
+    </div>
+
+    <!-- Random BTS quotes section -->
+    <div class="quotes" id="quoteDisplay"></div>
+
+    <!-- Falling circle balls will be added dynamically by JavaScript -->
+    <script>
+        const btsQuotes = [
+            "Life is tough, and things don’t always work out the way you want them to, but in the end, it’s all worth it.",
+            "You never know the value of what you have, until you lose it.",
+            "The only time you should look back is to see how far you’ve come.",
+            "Don’t be trapped in someone else’s dream.",
+            "Love myself, love yourself.",
+            "Be your own light. Don’t be afraid to stand out.",
+            "It’s not about being fearless. It’s about taking action despite your fears.",
+            "Doubt is the greatest killer. Don’t doubt yourself."
+        ];
+
+        function getRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * btsQuotes.length);
+            return btsQuotes[randomIndex];
+        }
+
+        // Display the random quote
+        document.getElementById('quoteDisplay').innerText = getRandomQuote();
+
+        // Update the quote every 5 seconds
+        setInterval(() => {
+            document.getElementById('quoteDisplay').innerText = getRandomQuote();
+        }, 5000);
+
+        // Function to create falling circle balls
+        function createFallingBalls() {
+            for (let i = 0; i < 5; i++) {
+                const ball = document.createElement('div');
+                ball.classList.add('falling-ball');
+                // Set random position for the balls on the edges
+                const side = Math.random() < 0.5 ? 'left' : 'right';
+                ball.style[side] = `${Math.random() * 100}vw`; // Random horizontal position
+
+                // Add the ball to the page
+                document.body.appendChild(ball);
+
+                // Remove the ball after animation to keep the DOM clean
+                setTimeout(() => {
+                    ball.remove();
+                }, 5000);
+            }
+        }
+
+        // Call the createFallingBalls function every 2 seconds to create new balls
+        setInterval(createFallingBalls, 2000);
+
+    </script>
+</body>
+
+</html>
